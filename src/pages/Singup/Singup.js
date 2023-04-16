@@ -1,33 +1,34 @@
 import React from 'react';
-
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
-
-  const { register, handleSubmit } = useForm();
-  const hnadleLogin = data => {
+const Singup = () => {
+  const { register, handleSubmit } = useForm()
+  const handleSingup = (data) => {
     console.log(data)
   }
-
   return (
     <div className=' flex justify-center items-center h-[800px]   '>
       <div className='w-96'>
-        <h3 className='text-4xl text-center'>Log in </h3>
-        <form onSubmit={handleSubmit(hnadleLogin)}>
+        <h3 className='text-4xl text-center'>singup </h3>
+        <form onSubmit={handleSubmit(handleSingup)}>
 
           <div className="form-control w-full max-w-xs">
+            <label className="label"><span className="label-text">Name</span></label>
+            <input type="text" {...register("name")} className="input input-bordered w-full max-w-xs" />
+          </div>
+          <div className="form-control w-full max-w-xs">
             <label className="label"><span className="label-text">Email</span></label>
-            <input type="text" {...register("email")} className="input input-bordered w-full max-w-xs" />
+            <input type="email" {...register("email")} className="input input-bordered w-full max-w-xs" />
           </div>
           <div className="form-control w-full max-w-xs">
             <label className="label"><span className="label-text">Password</span></label>
             <input type="password" {...register("password")} className="input input-bordered w-full max-w-xs" />
             <label className="label"><span className="label-text">Forget password</span></label>
-            <input className='btn btn-accent w-full' value='Login' type="submit" />
+            <input className='btn btn-accent w-full' value='singup' type="submit" />
           </div>
         </form>
-        <p>New to doctors portal? <Link to='/singup' className='text-secondary'>Create new account</Link></p>
+        <p>allready have an account  <Link to='/login' className='text-secondary'>singup</Link></p>
         <div className="divider">OR</div>
         <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
       </div>
@@ -35,4 +36,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Singup;
